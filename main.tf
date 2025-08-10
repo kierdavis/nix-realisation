@@ -49,7 +49,7 @@ locals {
 }
 
 data "external" "derivation" {
-  program = ["nix-shell", "-p", "python3", "--run", "python3 ${path.module}/derivation.py"]
+  program = ["nix-shell", "-p", "python3", "--run", "exec python3 ${path.module}/derivation.py"]
   query   = {
     flake_output = var.flake_output
     eval_options = jsonencode(var.eval_options)
