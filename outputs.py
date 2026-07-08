@@ -14,7 +14,7 @@ derivation = json.loads(subprocess.run(
   ],
   stdout=subprocess.PIPE,
   check=True,
-).stdout)[drv_path]
+).stdout)["derivations"][drv_path]
 
 result = {name: val["path"] for name, val in derivation["outputs"].items()}
 json.dump(result, sys.stdout, separators=(",", ":"))
