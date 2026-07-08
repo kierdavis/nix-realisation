@@ -16,5 +16,5 @@ derivation = json.loads(subprocess.run(
   check=True,
 ).stdout)["derivations"][drv_path.rsplit("/", 1)[-1]]
 
-result = {name: val["path"] for name, val in derivation["outputs"].items()}
+result = {name: "/nix/store/"+val["path"] for name, val in derivation["outputs"].items()}
 json.dump(result, sys.stdout, separators=(",", ":"))
